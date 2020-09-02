@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/idli-datepicker.esm.js"></script>
+    <script nomodule src="/build/idli-datepicker.js"></script>
+</head>
+<body>
+
+<h2>Basic usage</h2>
+<div class="section">
+    <idli-datepicker label="Name" placeholder="John Snow"></idli-datepicker>
+    <idli-datepicker variant="dashed" label="Name" placeholder="John Snow"></idli-datepicker>
+</div>
+
+<h2>Inline</h2>
+<div class="section">
+    <idli-datepicker size="lg" inline label="Size Large" value="Rahul"></idli-datepicker>
+    <idli-datepicker size="md" variant="dashed" inline label="Size Medium" value="John Snow"></idli-datepicker>
+    <idli-datepicker size="sm" inline label="Size Small" placeholder="Ravi"></idli-datepicker>
+</div>
+
+<h2>Sizes</h2>
+<div class="section">
+    <idli-datepicker size="lg" label="Size Large" value="Rahul"></idli-datepicker>
+    <idli-datepicker size="md" label="Size Medium" value="John Snow"></idli-datepicker>
+    <idli-datepicker size="sm" label="Size Small" placeholder="Ravi"></idli-datepicker>
+</div>
+
+<h2>Disabled State</h2>
+<div class="section">
+    <idli-datepicker size="md" label="Disabled" value="Visakhapatnam" disabled></idli-datepicker>
+    <idli-datepicker inline size="sm" label="Small Inline Disabled" placeholder="Ravi" disabled></idli-datepicker>
+    <idli-datepicker variant="dashed" label="Inline" placeholder="Ravi" disabled></idli-datepicker>
+</div>
+
+<h2>Required</h2>
+<div class="section">
+    <idli-datepicker size="lg" required label="Size Large" value="Rahul"></idli-datepicker>
+    <idli-datepicker size="md" required label="Size Medium" value="John Snow"></idli-datepicker>
+    <idli-datepicker size="sm" required label="Size Small" placeholder="Ravi"></idli-datepicker>
+</div>
+
+
+</body>
+</html>
