@@ -23,7 +23,7 @@
   },
   "keywords": [
     "idli",
-    "idli input",
+    "idli datepicker",
     "web component",
     "input component"
   ],
@@ -43,5 +43,5 @@
   "bugs": {
     "url": "https://github.com/idli-io/idli-datepicker/issues"
   },
-  "homepage": "https://idli.io/component/input.html"
+  "homepage": "https://idli.io/component/datepicker.html"
 }
