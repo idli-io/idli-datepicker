@@ -1,6 +1,6 @@
 {
   "name": "@idli/idli-datepicker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Idli Date Picker",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -15,6 +15,7 @@
     "loader/"
   ],
   "scripts": {
+    "prepare": "npm run build",
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",

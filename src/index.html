@@ -12,36 +12,48 @@
 
 <h2>Basic usage</h2>
 <div class="section">
-    <idli-datepicker label="Name" placeholder="John Snow"></idli-datepicker>
-    <idli-datepicker variant="dashed" label="Name" placeholder="John Snow"></idli-datepicker>
+    <idli-datepicker label="Name" class="datepicker"></idli-datepicker>
+    <idli-datepicker label="Name" type="datetime" class="datepicker"></idli-datepicker>
+    <idli-datepicker label="Name" type="time" class="datepicker"></idli-datepicker>
+
+    <idli-datepicker variant="dashed" label="Name"></idli-datepicker>
+
+    <script>
+        document.querySelectorAll('.datepicker').forEach((e) => {
+            e.addEventListener('inputChange', function (evt) {
+                console.log(evt.detail);
+            })
+        });
+    </script>
 </div>
 
 <h2>Inline</h2>
 <div class="section">
-    <idli-datepicker size="lg" inline label="Size Large" value="Rahul"></idli-datepicker>
-    <idli-datepicker size="md" variant="dashed" inline label="Size Medium" value="John Snow"></idli-datepicker>
-    <idli-datepicker size="sm" inline label="Size Small" placeholder="Ravi"></idli-datepicker>
+    <idli-datepicker size="lg" inline label="Size Large" value="2020-09-02T00:00:00.000Z"></idli-datepicker>
+    <idli-datepicker size="md" variant="dashed" inline label="Size Medium"
+                     value="2019-02-20T00:00:00.000Z"></idli-datepicker>
+    <idli-datepicker size="sm" inline label="Size Small"></idli-datepicker>
 </div>
 
 <h2>Sizes</h2>
 <div class="section">
-    <idli-datepicker size="lg" label="Size Large" value="Rahul"></idli-datepicker>
-    <idli-datepicker size="md" label="Size Medium" value="John Snow"></idli-datepicker>
-    <idli-datepicker size="sm" label="Size Small" placeholder="Ravi"></idli-datepicker>
+    <idli-datepicker size="lg" label="Size Large" value="2020-09-02T00:00:00.000Z"></idli-datepicker>
+    <idli-datepicker size="md" label="Size Medium" value="2019-02-20T00:00:00.000Z"></idli-datepicker>
+    <idli-datepicker size="sm" label="Size Small"></idli-datepicker>
 </div>
 
 <h2>Disabled State</h2>
 <div class="section">
-    <idli-datepicker size="md" label="Disabled" value="Visakhapatnam" disabled></idli-datepicker>
-    <idli-datepicker inline size="sm" label="Small Inline Disabled" placeholder="Ravi" disabled></idli-datepicker>
-    <idli-datepicker variant="dashed" label="Inline" placeholder="Ravi" disabled></idli-datepicker>
+    <idli-datepicker size="md" label="Disabled" value="2020-09-02T00:00:00.000Z" disabled></idli-datepicker>
+    <idli-datepicker inline size="sm" label="Small Inline Disabled" disabled></idli-datepicker>
+    <idli-datepicker variant="dashed" label="Inline" disabled></idli-datepicker>
 </div>
 
 <h2>Required</h2>
 <div class="section">
-    <idli-datepicker size="lg" required label="Size Large" value="Rahul"></idli-datepicker>
-    <idli-datepicker size="md" required label="Size Medium" value="John Snow"></idli-datepicker>
-    <idli-datepicker size="sm" required label="Size Small" placeholder="Ravi"></idli-datepicker>
+    <idli-datepicker size="lg" required label="Size Large" value="2020-09-02T00:00:00.000Z"></idli-datepicker>
+    <idli-datepicker size="md" required label="Size Medium" value="2019-02-20T00:00:00.000Z"></idli-datepicker>
+    <idli-datepicker size="sm" required label="Size Small"></idli-datepicker>
 </div>
 
 

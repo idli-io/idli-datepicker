@@ -24,10 +24,6 @@ export namespace Components {
     */
     'label': string;
     /**
-    * The input field placeholder.
-    */
-    'placeholder': string;
-    /**
     * If true, required icon is show. Defaults to `false`.
     */
     'required': boolean;
@@ -81,10 +77,6 @@ declare namespace LocalJSX {
     * On change of input a CustomEvent 'inputChange' will be triggered. Event details contains parent event, oldValue, newValue of input.
     */
     'onInputChange'?: (event: CustomEvent<any>) => void;
-    /**
-    * The input field placeholder.
-    */
-    'placeholder'?: string;
     /**
     * If true, required icon is show. Defaults to `false`.
     */

@@ -1,4 +1,4 @@
-import {Component, Prop, h, EventEmitter, Event} from '@stencil/core';
+import {Component, Event, EventEmitter, h, Prop} from '@stencil/core';
 
 @Component({
     tag: 'idli-datepicker',
@@ -10,11 +10,6 @@ export class IdliDatepicker {
      * The input field label.
      */
     @Prop() label: string;
-
-    /**
-     * The input field placeholder.
-     */
-    @Prop() placeholder: string;
 
     /**
      * The input field value.
@@ -69,6 +64,7 @@ export class IdliDatepicker {
             cls.push("required");
         return cls.join(" ");
     }
+
     getVariantClass() {
         let variant = "variant-";
         if (!this.variant)
@@ -99,28 +95,61 @@ export class IdliDatepicker {
     getInlineClass() {
         let inline = "";
         if (this.inline)
-            inline =  'inline';
+            inline = 'inline';
         return inline;
     }
+
+    toLocaleISOString(newDate) {
+        const zOffsetMs = newDate.getTimezoneOffset() * 60 * 1000;
+        const localTimeMs = newDate - zOffsetMs;
+        const date = new Date(localTimeMs);
+        const utcOffsetHr = newDate.getTimezoneOffset() / 60;
+        const utcOffsetSign = utcOffsetHr <= 0 ? '+' : '-';
+        const utcOffsetString = utcOffsetSign + (utcOffsetHr.toString.length == 1 ? `0${utcOffsetHr}` : `${utcOffsetHr}`) + ':00';
+        return date.toISOString().replace('Z', utcOffsetString);
+    };
 
     handleInputChange(event: any) {
         if (!this.disabled) {
             const oldValue = this.value;
-            this.value = event.target.value;
-            this.inputChange.emit({event, oldValue, newValue: this.value});
+            let newValue: any;
+            if (this.type === 'date') {
+                newValue = new Date(event.target.valueAsDate);
+                newValue.setUTCHours(0, 0, 0, 0);
+                newValue = newValue.toISOString();
+            } else if (this.type === 'datetime') {
+                newValue = new Date(newValue);
+                newValue = newValue.toISOString();
+            } else if (this.type === 'time') {
+                newValue = event.target.valueAsDate.toISOString();
+            }
+            this.value = newValue;
+            this.inputChange.emit({event, oldValue, newValue});
         }
     }
 
     getLabelElement() {
-        return  <label>{this.label}</label>;
+        return <label>{this.label}</label>;
+    }
+
+    getInputType() {
+        if (this.type == 'datetime')
+            return "datetime-local";
+        return this.type;
     }
 
     private getInputElement() {
+        let value = this.value;
+        if (value && this.type === 'date')
+            value = value.substr(0, 10);
+        if (value && this.type === 'datetime')
+            value = this.toLocaleISOString(new Date(value)).substr(0, 16);
+        if (value && this.type === 'time')
+            value = value.substr(11, 8);
         return <input
             class="idli-datepicker-element"
-            type={this.type}
-            placeholder={this.placeholder}
-            value={this.value}
+            type={this.getInputType()}
+            value={value}
             required={this.required}
             onInput={(event) => this.handleInputChange(event)}
             disabled={this.disabled}>
